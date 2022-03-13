@@ -5,22 +5,20 @@ main.title('APP/DPP calculator')
 main.geometry('360x480')
 
 # functions --
-def calculation_app():
-    pps = float(pps_input.get())
-    apm = float(apm_input.get())
-    app = apm/pps/60
-    return app
-
-def calculation_dpp():
+def calculation(stat):
     pps = float(pps_input.get())
     apm = float(apm_input.get())
     vs = float(vs_input.get())
+    app = apm/pps/60
     dpp = ((3*vs-5*apm)/(300*pps))
-    return dpp
+    if stat == 'app':
+        return app
+    elif stat == 'dpp':
+        return dpp
 
 def calculation_display():
-    display_app = calculation_app()
-    display_dpp = calculation_dpp()
+    display_app = calculation('app')
+    display_dpp = calculation('dpp')
 
     calculation_box = tk.Text(master=main, width=15, height=10)
     calculation_box.grid(row=5, column=0)
